@@ -41,7 +41,10 @@ public class CaesarCoder {
     public void bruteForceDecrypt(String inputFileName, String outputFileName, String dictionaryFileName) {
         validator.validateForReading(inputFileName);
         validator.validateForWriting(outputFileName);
-        validator.validateForWriting(dictionaryFileName);
+
+        if (dictionaryFileName != null && !dictionaryFileName.isEmpty() ) {
+            validator.validateForReading(dictionaryFileName);
+        }
 
         Set<String> dictionary = loadDictionary(dictionaryFileName);
 
